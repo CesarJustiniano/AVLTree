@@ -85,9 +85,9 @@ public abstract class AbstractBinaryTree<E> extends AbstractTree<E> implements
 		control[level]--; 
 		int nc = this.numChildren(r); 
 		control[level+1] = nc; 
-		for (Position<E>  p : this.children(r)) {
+		for (Position<E>  p : this.children(r)) 
 			recDisplay(p, control, level+1);  
-		}
+		
 	}
 
 

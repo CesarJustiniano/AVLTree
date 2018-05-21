@@ -101,9 +101,8 @@ public abstract class AbstractTree<E> implements Tree<E> {
 		control[level]--;                                                //
 		int nc = this.numChildren(root);                                 //
 		control[level+1] = nc;                                           //
-		for (Position<E>  p : this.children(root)) {                     //
-			recDisplay(p, control, level+1);                             //
-		}                                                                //
+		for (Position<E>  p : this.children(root)) 	                    //
+			recDisplay(p, control, level+1);                             //	                                                                //
 	}                                                                    //
                                                                          //
 	// Auxiliary method to support display                               //

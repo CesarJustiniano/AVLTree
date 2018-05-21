@@ -67,12 +67,8 @@ public class LinkedAVL_BST<E> extends LinkedBinaryTree<E> {
 	// whenever rebalancing is needed. 
 	//... NEED TO SEE IF IT CAN BE IMPROVED...
 	protected void restructure(Node<E> a, Node<E> b, Node<E> c) { 
-		
-		Node<E> t2Root = (a.getParent() == b ? a.getRight() : b.getLeft());
-		Node<E> t3Root = (c.getParent() == b ? c.getLeft() : b.getRight());
-
-		attachRight(a, t2Root); 
-		attachLeft(c, t3Root); 
+		attachRight(a, a.getParent() == b ? a.getRight() : b.getLeft()); 
+		attachLeft(c, c.getParent() == b ? c.getLeft() : b.getRight()); 
 
 		attachSubtrees(b, a, c); 
 	}
@@ -100,9 +96,8 @@ public class LinkedAVL_BST<E> extends LinkedBinaryTree<E> {
 	}
 
 	protected void setHeight(Node<E> r) {
-		int hl = (r.getLeft() != null ? r.getLeft().getNodeHeight() : -1); 
-		int hr = (r.getRight() != null ? r.getRight().getNodeHeight() : -1);
-		r.setNodeHeight(Math.max(hl, hr) + 1);
+		r.setNodeHeight(Math.max(r.getLeft() != null ? r.getLeft().getNodeHeight() : -1, 
+				r.getRight() != null ? r.getRight().getNodeHeight() : -1) + 1);
 	}
 
 	/**
